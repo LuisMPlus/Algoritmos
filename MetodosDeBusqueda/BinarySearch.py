@@ -1,5 +1,6 @@
 #IMPORTANTE. La lista debe estar previamente ordenada.
 
+#Animacion https://www.youtube.com/shorts/Tjkl3G-HAsA
 def busquedaBinaria(lista, x):
     """ Búsqueda Binaria 
     Precondición: lista está ordenada 
@@ -12,8 +13,9 @@ def busquedaBinaria(lista, x):
     
     # un segmento es vacío cuando izq > der:
     while izq <= der:
-        print(lista[izq:der])
         medio = (izq+der)//2
+        #print(lista[izq:der+1])
+        #print("medio: ", medio)
         if lista[medio] == x:
             return medio
         elif lista[medio] > x:
@@ -34,12 +36,3 @@ else:
 
 
 
-#Debugging
-"""
-Continue    Avanze al siguiente breakpoint
-Step Over   Sigue al siguiente paso. A la siguiente linea del la parte principal del programa. No ingresa al metodo.
-Step Into   Aca si ingresa al metodo
-Step Out    Sale del metodo
-Restart     Reinicar la ejecucion del codigo
-Stop        Para toda la ejecucion
-"""

@@ -7,20 +7,12 @@ import random
 
 # Animacion: https://www.youtube.com/shorts/t40PfJDPWkk?feature=share
 
-
-
-
-
-
-
-
-
-
 def quicksort(lista, start, stop):
     print(lista)
     if stop - start > 0:
+        #print(lista[start:stop+1])
         pivot, left, right = lista[start], start, stop
-        print("Pivot es  :", pivot)
+        #print("Pivot es  :", pivot)
 
         while left <= right:
             while lista[left] < pivot:
@@ -32,21 +24,14 @@ def quicksort(lista, start, stop):
                 left += 1
                 right -= 1
 
-        print("Izquierda :", lista[start:right+1])
+        #print("Izquierda :", lista[start:right])
         quicksort(lista, start, right)
-        print("Derecha   :", lista[left:stop+1])
+        #print("Derecha   :", lista[left:stop])
         quicksort(lista, left, stop)
+    else:
+        #print("1_ ", lista[start:stop])
+        pass
     return lista
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -66,8 +51,8 @@ listaOrdenada = quicksort(lista, 0, len(lista)-1)
 print("Lista ordenada:", listaOrdenada) """
 
 
-lista = [7, 4, 3, 5, 10, 1, 2]
-
+lista =[3, 12, 9, 10]
+print("Lista a ordenar: ", lista)
 
 listaOrdenada = quicksort(lista, 0, len(lista)-1)
 print("Lista ordenada:", listaOrdenada)

@@ -2,7 +2,7 @@
 ## Considerations
 
 ### 1. Bubble Sort
-Este algoritmo consiste en ir iterando la lista e ir comparando los elementos adyancentes para luego intercambiarlos, si es que fuera necesario, las veces que sean necesarias (por lo general hasta la longitud de la lista)
+Este algoritmo consiste en ir iterando la lista e ir comparando los elementos par en par y segun una condicion irlos intercambiando las veces que sean necesarias (por lo general hasta la longitud de la lista)
 * Se compone principalemente de dos bucles for anidados. Bucle 1(el principal, en referencia que es el que incluye todo el dodigo hasta el return) y un bucle 2
 
 *  El bucle 1 itera hasta la longitud de la lista<br>
@@ -18,6 +18,8 @@ En caso que se cumpla se hara un intercambio de valores de las posiciones <br>
 <code>  lista[j], lista[j+1] = lista[j+1], lista[j]</code>
 
 ### 2. Insertion Sort
+Trata de ir iterando la lista, teniendo una sublista la cual seria los elemntos posicionados atras en lo que respecta al iterador del bucle anteriormente dicho. Esa sublista se mantiene correctamente ordenada con cada elemento nuevo que se vaya "a√±adiendo" a medida que se la vaya iterando. No intercambia posiciones se maneja a traves de asignaciones con la ayuda de una key.
+
 * Se compone de dos bucles anidados. El bucle 1 es un for y el bucle 2 es un while.
 
 * El bucle 1 itera desde 1(incluido) hasta la longitud de la lista(excluido). Pues se considera que al haber un solo elemento en una 'sublista' ya esta ordenado. Consideramos la sublista al conjunto de los elementos anteriores respecto a lo que va iterando el bucle 1 <br>
@@ -46,6 +48,7 @@ Con el objetivo de ir ordenando la sublista. A medida que itera el bucle 1 se a√
 
 ### 3. Selection Sort
 Este algoritmo consiste en ir iterando la lista e ir agarrado la posicion del valor minimo de la lista e intercambiarlo con los primeros elementos de la lista.
+
 * Se compone en cuestion de codigo en dos bucles anidados
 
 * Bucle 1 desde 0 hasta la longitud de la lista menos 1<br>
@@ -62,17 +65,13 @@ Este algoritmo consiste en ir iterando la lista e ir agarrado la posicion del va
 * Al terminar el bucle 2 se procede a intercambiar de los primeros elementos con los valores minimos encontrados de la lista <br>
 <code>  lista[i], lista[indMIn] = lista[indMIn], lista[i]</code>
 
-### 4. Merge Sort
+### 4. Shell Sort
+Se compone de tres bucles(dos while y un for). En vez de ir comparando elementos adyacentes como algunos algoritmos anteriores en este se comparan a una cierta distancia que estara determinada con lo que llamaremos gap. Este gap se ira dividiendo enteramente por dos hasta que se vuelva cero.
 
-
-
-
-### 5. Shell Sort
-Se compone de tres bucles(dos while y un for). En vez de ir comparando elementos adyacentes como algunos algoritmos anteriores en este se comparan a una cierta distancia que estara determinada con lo que llamaremos gap. 
 * Se incializa el gap en la mitad entera de la longitud de la lista <br>
 <code>  gap = n // 2 </code>
 
-* Luego se procede con el bucle 1 que contiene al resto del codigo. Bucle el cual mientras el gap sea mayor a cero seguira ejecutandose, esto porque depues lo disminuimos. <br>
+* Luego se procede con el bucle 1 que contiene al resto del codigo. Bucle el cual mientras el gap sea mayor a cero seguira ejecutandose, esto porque depues lo dividimos enteramente por dos. <br>
 <code>  while gap > 0</code>
 
 * Bluce 2 que recorre la lista desde el gap hasta la longitud de la lista. En la primera iteracion recorrera desde la mitad de la lista hasta el final de la misma depues esa distancia de mitad se ira reduciendo de mitad en mitad hasta que sea 0 <br>
@@ -82,19 +81,21 @@ Se compone de tres bucles(dos while y un for). En vez de ir comparando elementos
 <pre>   tmp = lista[i] 
     j = i</pre>
 
-* Bucle 3 que mientras j sea mayor o igual al gap y lista en posicion **[j-gap]** sea mayor a la variable temporal se ejecutara el bucle <br>
-<code>  while j >= gap and lista[j - gap] > tmp</code>
-
-* Se asigna en lista posicion **j** el valor de la posicion **[j-gap]** y de decrementa **j** en menos **gap** <br>
-<pre>   lista[j] = lista[j - gap]
+* Bucle 3 que mientras j sea mayor o igual al gap y lista en posicion **[j-gap]** sea mayor a la variable temporal se ejecutara el bucle. Lo que queremos hacer aqui es ir asignando bajo la condicion del while los elemento desde atras en lo que respecta al iterador del bucle 2 en la distancia gap e ir recorriendo hasta que j sea menor al gap <br>
+<pre>   while j >= gap and lista[j - gap] > tmp
+    lista[j] = lista[j - gap]
     j -= gap</pre>
 
 * Al terminar el bucle 3 se divide enteramente el gap en 2. Para la siguiente iteracion del bucle 2 <br>
 <code>  gap = gap // 2 </code>
 
-### 6. Quick Sort
-Consiste en subdivir la lista en sublistas que se vayan ordenando mediante la recursion. Utiliza el paradigma divide y venceras 
+### 5. Quick Sort
+Consiste en dividir la lista en sublistas determinadas por el pivot para los que serian los elementos menores en la izquierda y los elementos mayores a la derecha(incluyendo al pivot). Para que se vayan ordenando mediante la recursion. Utiliza el paradigma divide y venceras.
+
 * Primeramente la funcion recibe tres parametros tanto sean la lista, start y stop. <br>
 <code>def quicksort(lista, start, stop)</code>
 
 * 
+
+
+### 6. Merge Sort
